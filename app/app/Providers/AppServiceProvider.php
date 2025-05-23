@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Models\Article;
 use App\Policies\ArticlePolicy;
 use Illuminate\Support\ServiceProvider;
-use Modules\Blog\app\Providers\BlogServiceProvider;
+use Modules\PkgGestionInscription\app\Providers\PkgGestionInscriptionServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->register(BlogServiceProvider::class);
+        $this->app->register(PkgGestionInscriptionServiceProvider::class);
     }
 
     /**

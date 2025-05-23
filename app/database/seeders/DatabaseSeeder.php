@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Modules\Blog\Database\Seeders\DatabaseSeederBlog;
+use Modules\PkgGestionInscription\Database\seeders\DatabaseSeederPkgGestionInscription;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,10 +29,10 @@ class DatabaseSeeder extends Seeder
         ]);
         // Call other seeders
         $this->call([
-            RolePermissionSeeder::class, // Add Role & permission
-            DatabaseSeederBlog::class
+            // RolePermissionSeeder::class, // Add Role & permission
+            DatabaseSeederPkgGestionInscription::class
         ]);
-        $user->assignRole('admin');
+        // $user->assignRole('admin');
     }
 }
 
