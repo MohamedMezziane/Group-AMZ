@@ -334,6 +334,11 @@ return [
             'url' => 'dashboard2',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
+        [
+            'text' => 'Table',
+            'url' => 'table',
+            'icon' => 'fas fa-fw fa-file-alt',
+        ],
     ],
 
     /*

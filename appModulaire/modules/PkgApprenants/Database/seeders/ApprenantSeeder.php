@@ -10,7 +10,20 @@ class ApprenantSeeder extends Seeder
 {
     public function run()
     {
-        Apprenant::create(['nom' => 'John Doe', 'statut' => 'Actif']);
-        Apprenant::create(['nom' => 'Jane Smith', 'statut' => 'Inactif']);
+        $apprenants = [
+            ['nom' => 'Lucas Martin', 'statut' => 'Actif'],
+            ['nom' => 'Sophie Dubois', 'statut' => 'Actif'],
+            ['nom' => 'Emma Lefevre', 'statut' => 'Inactif'],
+            ['nom' => 'Noah Bernard', 'statut' => 'Actif'],
+            ['nom' => 'Chloe Moreau', 'statut' => 'Actif'],
+            ['nom' => 'Paul Simon', 'statut' => 'Inactif'],
+            ['nom' => 'Alice Leroy', 'statut' => 'Actif'],
+            ['nom' => 'Liam Petit', 'statut' => 'Actif'],
+            ['nom' => 'Juliette Roche', 'statut' => 'Actif'],
+            ['nom' => 'Lucas Dubois', 'statut' => 'Actif'],
+        ];
+        foreach ($apprenants as $apprenant) {
+            Apprenant::create($apprenant);
+        }
     }
 }

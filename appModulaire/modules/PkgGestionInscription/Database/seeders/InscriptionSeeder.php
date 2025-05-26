@@ -4,13 +4,26 @@ namespace  modules\PkgGestionInscription\Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\PkgApprenants\models\Apprenant;
+use Modules\PkgGestionInscription\models\Atelier;
+use Modules\PkgGestionInscription\models\Groupe;
 use Modules\PkgGestionInscription\models\Inscription;
 
 class InscriptionSeeder extends Seeder
 {
     public function run()
     {
-        Inscription::create(['apprenantId' => 1, 'atelierId' => 1, 'groupeId' => 1, 'description' => 'Inscription de John Doe']);
-        Inscription::create(['apprenantId' => 2, 'atelierId' => 2, 'groupeId' => 2, 'description' => 'Inscription de Jane Smith']);
+        $apprenants = Apprenant::all();
+        $ateliers = Atelier::all();
+        $groupes = Groupe::all();
+
+        foreach ($apprenants as $apprenant) {
+            Inscription::create([
+                'apprenantId' => $apprenant->id,
+                'atelierId' => $ateliers->random()->id,
+                'groupeId' => $groupes->random()->id,
+                'description' => 'Inscription pour ' . $apprenant->nom,
+            ]);
+        }
     }
 }

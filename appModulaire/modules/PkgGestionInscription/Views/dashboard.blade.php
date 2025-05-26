@@ -9,10 +9,49 @@
 
 @section('content')
     <div class="row">
+        <!-- Statistics Cards -->
+        <div class="col-md-3">
+            <div class="card bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Total Apprenants</h5>
+                    <p class="card-text">{{ $apprenants->count() }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Total Ateliers</h5>
+                    <p class="card-text">{{ $ateliers->count() }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Total Groupes</h5>
+                    <p class="card-text">{{ $groupes->count() }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">Total Inscriptions</h5>
+                    <p class="card-text">{{ $inscriptions->count() }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">apprenants</h3>
+                    <h3 class="card-title">Apprenants</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -55,7 +94,7 @@
         </div>
     </div>
 
-    <div class="card">
+    <!-- <div class="card mt-4">
         <div class="card-header">
             <h3 class="card-title">Inscriptions</h3>
         </div>
@@ -63,7 +102,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>apprenant</th>
+                        <th>Apprenant</th>
                         <th>Atelier</th>
                         <th>Groupe</th>
                         <th>Description</th>
@@ -72,14 +111,14 @@
                 <tbody>
                     @foreach ($inscriptions as $inscription)
                         <tr>
-                            <td>{{ $inscription->apprenant->nom }}</td>
-                            <td>{{ $inscription->atelier->nom }}</td>
-                            <td>{{ $inscription->groupe->nom }}</td>
+                            <td>{{ $inscription->apprenant->nom ?? 'N/A' }}</td>
+                            <td>{{ $inscription->atelier->nom ?? 'N/A' }}</td>
+                            <td>{{ $inscription->groupe->nom ?? 'N/A' }}</td>
                             <td>{{ $inscription->description }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
 @stop
