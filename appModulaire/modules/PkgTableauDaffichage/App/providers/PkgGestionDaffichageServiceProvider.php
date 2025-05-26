@@ -3,6 +3,7 @@
 namespace modules\PkgTableauDaffichage\App\providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
 // use Modules\Blog\Models\Article;
 // use Modules\Blog\Policies\ArticlePolicy;
@@ -14,14 +15,15 @@ class PkgGestionDaffichageServiceProvider extends ServiceProvider
     // ];
     public function boot()
     {
+        Paginator::useBootstrap();
         // Charger les routes
-        $this->loadRoutesFrom(__DIR__.'/../../Routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../../Routes/web.php');
 
         // Charger les migrations
-        $this->loadMigrationsFrom(__DIR__.'/../../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../../Database/Migrations');
 
         // Charger les vues
-        $this->loadViewsFrom(__DIR__.'/../../Resources/views', 'PkgTableauDaffichage');
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'PkgTableauDaffichage');
     }
 
     public function register()
