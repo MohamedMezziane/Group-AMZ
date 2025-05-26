@@ -299,7 +299,6 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
         [
             'type' => 'navbar-search',
             'text' => 'search',
@@ -310,7 +309,6 @@ return [
             'topnav_right' => true,
         ],
 
-        // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
@@ -324,12 +322,17 @@ return [
         [
             'text' => 'dashboard',
             'url' => 'dashboard',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
             'text' => 'Posts table',
             'url' => 'posts',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-file-alt',
+        ],
+        [
+            'text' => 'Inscriptions',
+            'url' => 'dashboard2',
+            'icon' => 'fas fa-fw fa-clipboard-list',
         ],
     ],
 
