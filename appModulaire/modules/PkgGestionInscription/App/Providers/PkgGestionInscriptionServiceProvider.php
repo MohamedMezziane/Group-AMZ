@@ -21,7 +21,7 @@ class PkgGestionInscriptionServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../../Database/Migrations');
 
         // Charger les vues
-        $this->loadViewsFrom(__DIR__.'/../../Resources/views', 'PkgGestionInscription');
+        $this->loadViewsFrom(__DIR__.'/../../views', 'PkgGestionInscription');
 
         // Publier les assets si nécessaire
     }
