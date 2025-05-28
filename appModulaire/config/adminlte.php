@@ -325,9 +325,14 @@ return [
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text' => 'Posts table',
+            'text' => 'Manage posts',
             'url' => 'posts',
             'icon' => 'fas fa-fw fa-file-alt',
+        ],
+        [
+            'text' => 'Manage categories',
+            'url'  => 'categories',
+            'icon' => 'fas fa-fw fa-folder-plus',
         ],
         [
             'text' => 'Inscriptions',
