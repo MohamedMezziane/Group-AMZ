@@ -330,7 +330,7 @@ return [
             'icon' => 'fas fa-fw fa-file-alt',
         ],
         [
-            'text' => 'Inscriptions',
+            'text' => 'Dashboard',
             'url' => 'dashboard2',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
