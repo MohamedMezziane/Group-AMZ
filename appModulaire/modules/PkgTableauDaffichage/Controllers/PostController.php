@@ -7,6 +7,7 @@ use Modules\Core\Controllers\Controller;
 use Modules\PkgTableauDaffichage\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Modules\PkgTableauDaffichage\Models\PostCategory;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -33,10 +34,22 @@ class PostController extends Controller
         ));
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('categorie')->latest()->paginate(10);
-        return view('PkgTableauDaffichage::posts.index', compact('posts'));
+        $query = Post::with('categorie')->latest();
+
+        if ($request->filled('search')) {
+            $query->where('titre', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('categorie_id', $request->category_id);
+        }
+
+        $posts = $query->paginate(10)->withQueryString();
+
+        $categories = PostCategory::all();
+        return view('PkgTableauDaffichage::posts.index', compact('posts', 'categories'));
     }
 
     public function create()
@@ -49,15 +62,30 @@ class PostController extends Controller
     {
         $request->validate([
             'titre' => 'required|string|max:255',
-            'image_url' => 'nullable|url|max:255',
             'description' => 'required|string',
             'categorie_id' => 'required|exists:post_categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Post::create($request->all());
+        $imagePath = null;
 
-        return redirect()->route('posts.index')->with('success', 'Post créé avec succès !');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $filename);
+            $imagePath = 'images/' . $filename;
+        }
+
+        Post::create([
+            'titre' => $request->titre,
+            'description' => $request->description,
+            'categorie_id' => $request->categorie_id,
+            'image_url' => $imagePath,
+        ]);
+
+        return redirect()->route('posts.index')->with('success', 'Post créé avec succès!');
     }
+
 
     public function edit(Post $post)
     {
@@ -69,12 +97,31 @@ class PostController extends Controller
     {
         $request->validate([
             'titre' => 'required|string|max:255',
-            'image_url' => 'nullable|url|max:255',
             'description' => 'required|string',
             'categorie_id' => 'required|exists:post_categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $post->update($request->all());
+        $imagePath = $post->image_url;
+
+        if ($request->hasFile('image')) {
+            // Optionally delete old image
+            if ($post->image_url && file_exists(public_path($post->image_url))) {
+                unlink(public_path($post->image_url));
+            }
+
+            $image = $request->file('image');
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $filename);
+            $imagePath = 'images/' . $filename;
+        }
+
+        $post->update([
+            'titre' => $request->titre,
+            'description' => $request->description,
+            'categorie_id' => $request->categorie_id,
+            'image_url' => $imagePath,
+        ]);
 
         return redirect()->route('posts.index')->with('success', 'Post mis à jour avec succès !');
     }

@@ -7,26 +7,20 @@
 @stop
 
 @section('content')
-<form action="{{ route('posts.store') }}" method="POST">
+<form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <x-adminlte-input name="titre" label="Titre" placeholder="Titre du post" value="{{ old('titre') }}" />
-    <x-adminlte-input name="image_url" label="URL de l'image" placeholder="https://example.com/image.jpg" value="{{ old('image_url') }}" />
-    <x-adminlte-textarea name="description" label="Description" placeholder="Description du post">{{ old('description') }}</x-adminlte-textarea>
+    <x-adminlte-input name="titre" label="Titre" placeholder="Entrez le titre..." fgroup-class="col-md-6" />
 
-    <x-adminlte-select name="categorie_id" label="Catégorie">
-        <option value="">-- Choisir une catégorie --</option>
-        @foreach($categories as $category)
-        <option value="{{ $category->id }}" @selected(old('categorie_id')==$category->id)>{{ $category->nom }}</option>
+    <x-adminlte-textarea name="description" label="Description" fgroup-class="col-md-12" />
+
+    <x-adminlte-select name="categorie_id" label="Catégorie" fgroup-class="col-md-6">
+        @foreach ($categories as $cat)
+        <option value="{{ $cat->id }}">{{ $cat->nom }}</option>
         @endforeach
     </x-adminlte-select>
 
-    @error('titre')
-    <x-adminlte-alert theme="danger">{{ $message }}</x-adminlte-alert>
-    @enderror
-    @error('categorie_id')
-    <x-adminlte-alert theme="danger">{{ $message }}</x-adminlte-alert>
-    @enderror
+    <x-adminlte-input name="image" type="file" label="Image" fgroup-class="col-md-6" />
 
     <x-adminlte-button type="submit" label="Créer" theme="primary" icon="fas fa-save" />
 </form>
