@@ -23,3 +23,4 @@ class CreateAteliersTable extends Migration
         Schema::dropIfExists('ateliers');
     }
 }
+
