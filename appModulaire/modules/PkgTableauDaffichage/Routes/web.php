@@ -8,5 +8,4 @@ Route::get('/dashboard', [PostController::class, 'dashboard'])->name('dashboard'
 
 Route::resource('posts', PostController::class);
 
-//Categories
 Route::resource('/categories', PostCategoryController::class);

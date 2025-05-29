@@ -34,7 +34,7 @@
 </form>
 
 {{-- Category List --}}
-<x-adminlte-card title="📂 Liste des Catégories" theme="light" icon="fas fa-list">
+<x-adminlte-card title="📂 Liste des Catégories" theme="light">
     <table class="table table-hover">
         <thead>
             <tr>
