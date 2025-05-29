@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
             __DIR__ . '/../routes/web.php',
             __DIR__ . '/../modules/Blog/Routes/web.php',
             __DIR__ . '/../modules/PkgTableauDaffichage/Routes/web.php',
+            __DIR__ . '/../modules/PkgGestionInscription/Routes/web.php',
         ],
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',

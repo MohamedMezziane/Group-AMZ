@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <form action="{{route('ateliers.edit', $atelier)  }}" method="POST">
+    <form action="{{route('ateliers.update', $atelier)  }}" method="POST">
         @csrf
         @method('PUT')
 
