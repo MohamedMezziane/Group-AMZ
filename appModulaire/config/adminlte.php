@@ -335,13 +335,23 @@ return [
             'icon' => 'fas fa-fw fa-folder-plus',
         ],
         [
-            'text' => 'Inscriptions',
+            'text' => 'Dashboard2',
             'url' => 'dashboard2',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
+        // [
+        //     'text' => 'Table',
+        //     'url' => 'table',
+        //     'icon' => 'fas fa-fw fa-file-alt',
+        // ],
         [
-            'text' => 'Table',
-            'url' => 'table',
+            'text' => 'Manage Ateliers',
+            'url' => 'ateliers',
+            'icon' => 'fas fa-fw fa-file-alt',
+        ],
+        [
+            'text' => 'Manage groupes',
+            'url' => 'groupes',
             'icon' => 'fas fa-fw fa-file-alt',
         ],
     ],

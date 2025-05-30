@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Groupe extends Model
 {
-    public function atelier()
-    {
-        return $this->belongsTo(Atelier::class);
+    protected $fillable = ['nom', 'description', 'atelierId', 'maxParticipants'];
+    public function atelier(){
+        return $this->belongsTo(Atelier::class, 'atelierId');
     }
-
     public function inscriptions()
     {
         return $this->hasMany(Inscription::class);

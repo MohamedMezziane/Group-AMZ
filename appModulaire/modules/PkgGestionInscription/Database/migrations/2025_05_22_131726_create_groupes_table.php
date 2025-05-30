@@ -23,3 +23,5 @@ class CreateGroupesTable extends Migration
         Schema::dropIfExists('groupes');
     }
 }
+
+
