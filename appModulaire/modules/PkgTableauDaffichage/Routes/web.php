@@ -11,3 +11,5 @@ Route::middleware(['web', 'auth'])->group(function () {
 
     Route::resource('/categories', PostCategoryController::class);
 });
+
+Route::get('/affichage', [PostController::class, 'publicIndex'])->name('public.posts');

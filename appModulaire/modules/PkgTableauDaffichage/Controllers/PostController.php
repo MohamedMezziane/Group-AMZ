@@ -58,6 +58,12 @@ class PostController extends Controller
         return view('PkgTableauDaffichage::posts.create', compact('categories'));
     }
 
+    public function publicIndex()
+    {
+        $posts = Post::with('categorie')->latest()->paginate(9);
+        return view('PkgTableauDaffichage::posts.public', compact('posts'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
