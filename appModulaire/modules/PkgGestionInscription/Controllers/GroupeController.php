@@ -9,10 +9,24 @@ use App\Http\Controllers\Controller;
 
 class GroupeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $groupes = Groupe::all();
-        return view('PkgGestionInscription::groupes.index', compact('groupes'));
+        $query = Groupe::query();
+    
+        // Filtrage par nom
+        if ($request->filled('search')) {
+            $query->where('nom', 'like', '%' . $request->search . '%');
+        }
+    
+        // Filtrage par atelier
+        if ($request->filled('atelierId')) {
+            $query->where('atelierId', $request->atelierId);
+        }
+    
+        $groupes = $query->with('atelier')->get();
+        $ateliers = Atelier::all(); // Récupérer tous les ateliers pour le filtre
+    
+        return view('PkgGestionInscription::groupes.index', compact('groupes', 'ateliers'));
     }
 
     public function create()
