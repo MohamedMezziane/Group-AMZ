@@ -43,6 +43,7 @@
                             <a href="{{ route('ateliers.edit', $atelier) }}" class="btn btn-sm btn-primary me-2">
                                 <i class="fas fa-edit"></i> Modifier
                             </a>
+                            <div class="mx-2"></div> <!-- Espace ajouté ici -->
                             <form action="{{ route('ateliers.destroy', $atelier->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Supprimer cet atelier ?')">
                                 @csrf
                                 @method('DELETE')
