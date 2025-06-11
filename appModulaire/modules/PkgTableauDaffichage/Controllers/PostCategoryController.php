@@ -3,9 +3,9 @@
 namespace Modules\PkgTableauDaffichage\Controllers;
 
 use Modules\Core\Controllers\Controller;
-
-use Illuminate\Http\Request;
 use Modules\PkgTableauDaffichage\Models\PostCategory;
+use Modules\PkgTableauDaffichage\App\requests\StorePostCategoryRequest;
+use Modules\PkgTableauDaffichage\App\requests\UpdatePostCategoryRequest;
 
 class PostCategoryController extends Controller
 {
@@ -15,13 +15,9 @@ class PostCategoryController extends Controller
         return view('PkgTableauDaffichage::categories.index', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StorePostCategoryRequest $request)
     {
-        $request->validate([
-            'nom' => 'required|string|max:255',
-        ]);
-
-        PostCategory::create(['nom' => $request->nom]);
+        PostCategory::create($request->validated());
 
         return redirect()->route('categories.index')->with('success', 'Catégorie ajoutée avec succès!');
     }
@@ -32,13 +28,9 @@ class PostCategoryController extends Controller
         return view('PkgTableauDaffichage::categories.index', compact('categories', 'category'));
     }
 
-    public function update(Request $request, PostCategory $category)
+    public function update(UpdatePostCategoryRequest $request, PostCategory $category)
     {
-        $request->validate([
-            'nom' => 'required|string|max:255',
-        ]);
-
-        $category->update(['nom' => $request->nom]);
+        $category->update($request->validated());
 
         return redirect()->route('categories.index')->with('success', 'Catégorie modifiée avec succès!');
     }

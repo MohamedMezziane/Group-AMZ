@@ -1,17 +1,17 @@
 <?php
 
-namespace Modules\Blog\app\Requests;
+namespace Modules\PkgTableauDaffichage\App\requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImportRequest extends FormRequest
+class StorePostCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,7 +22,7 @@ class ImportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|file|mimes:xlsx,xlsmax:10240'
+            'nom' => 'required|string|max:255',
         ];
     }
 }
