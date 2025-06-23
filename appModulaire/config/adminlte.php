@@ -320,40 +320,40 @@ return [
         ],
         ['header' => 'Tableau de bord'],
         [
-            'text' => 'dashboard',
+            'text' => 'tableau de bord',
             'url' => 'dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
-            'text' => 'Manage posts',
+            'text' => 'gérer les posts',
             'url' => 'posts',
             'icon' => 'fas fa-fw fa-file-alt',
         ],
         [
-            'text' => 'Manage categories',
+            'text' => 'gérer les catégories',
             'url'  => 'categories',
             'icon' => 'fas fa-fw fa-folder-plus',
         ],
-        [
-            'text' => 'Dashboard2',
-            'url' => 'dashboard2',
-            'icon' => 'fas fa-fw fa-clipboard-list',
-        ],
+        // [
+        //     'text' => 'Dashboard2',
+        //     'url' => 'dashboard2',
+        //     'icon' => 'fas fa-fw fa-clipboard-list',
+        // ],
         // [
         //     'text' => 'Table',
         //     'url' => 'table',
         //     'icon' => 'fas fa-fw fa-file-alt',
         // ],
-        [
-            'text' => 'Manage Ateliers',
-            'url' => 'ateliers',
-            'icon' => 'fas fa-fw fa-file-alt',
-        ],
-        [
-            'text' => 'Manage groupes',
-            'url' => 'groupes',
-            'icon' => 'fas fa-fw fa-file-alt',
-        ],
+        // [
+        //     'text' => 'Manage Ateliers',
+        //     'url' => 'ateliers',
+        //     'icon' => 'fas fa-fw fa-file-alt',
+        // ],
+        // [
+        //     'text' => 'Manage groupes',
+        //     'url' => 'groupes',
+        //     'icon' => 'fas fa-fw fa-file-alt',
+        // ],
     ],
 
     /*
