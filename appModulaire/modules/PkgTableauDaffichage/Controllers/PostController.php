@@ -58,10 +58,18 @@ class PostController extends Controller
         return view('PkgTableauDaffichage::posts.create', compact('categories'));
     }
 
-    public function publicIndex()
+    public function publicIndex(Request $request)
     {
-        $posts = Post::with('categorie')->latest()->paginate(9);
-        return view('PkgTableauDaffichage::posts.public', compact('posts'));
+        $query = Post::with('categorie')->latest();
+
+        if ($request->filled('category_id')) {
+            $query->where('categorie_id', $request->category_id);
+        }
+
+        $categories = PostCategory::all();
+        $posts = $query->paginate(9)->withQueryString();
+
+        return view('PkgTableauDaffichage::posts/public', compact('posts', 'categories'));
     }
 
     public function store(Request $request)
